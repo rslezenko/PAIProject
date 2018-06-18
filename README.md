@@ -21,7 +21,7 @@ Spring project using Hibernate Framework, database MySQL, Spring Security and JP
 
 ## Authors
 
-* **Roman Slezenko** - *RAI Project* - [@rslezenko](https://github.com/rslezenko)
+* **Roman Slezenko** - *PAI Project* - [@rslezenko](https://github.com/rslezenko)
 
 
 
