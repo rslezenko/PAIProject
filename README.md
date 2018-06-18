@@ -1,5 +1,5 @@
 # PAI Project
-Sring project using Hibernate Framework, database MySQL, Spring Security and JPA Repository.
+Spring project using Hibernate Framework, database MySQL, Spring Security and JPA Repository.
 
 # Screenshots
 
