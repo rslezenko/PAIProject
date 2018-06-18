@@ -21,7 +21,7 @@ Sring project using Hibernate Framework, database MySQL, Spring Security and JPA
 
 ## Authors
 
-* **Roman Slezenko** - *Initial work* - [@rslezenko](https://github.com/rslezenko)
+* **Roman Slezenko** - *RAI Project* - [@rslezenko](https://github.com/rslezenko)
 
 
 
