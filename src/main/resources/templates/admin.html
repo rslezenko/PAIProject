@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar-top-fixed.css}"/>
+
+
+    <title>Welcome!</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#"> Admin RS Company</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+        </ul>
+        <form class="form-inline mt-2 mt-md-0" th:action="@{/logout}" method="post">
+            <a class="navbar-brand" href="#" th:inline="text">Welcome, [[${#httpServletRequest.remoteUser}]] </a>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="jumbotron">
+
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]] , welcome in Admin Panel!</h1>
+
+        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
+
+    </div>
+
+    <h1>Users:</h1>
+
+
+    <div class="jumbotron">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Date of Birthday</th>
+                <th>Mobile Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <article th:each="p : ${users}">
+                <tr>
+                    <td th:text="${p.id}">1</td>
+                    <td th:text="${p.firstName}">Mark</td>
+                    <td th:text="${p.lastName}">Otto</td>
+                    <td th:text="${p.username}">test</td>
+                    <td th:text="${p.email}">test</td>
+                    <td th:text="${p.dob}">test</td>
+                    <td th:text="${p.mobileNum}">test</td>
+
+                    <td>
+                        <form th:action="@{/admin/delete/{id}/(id=${p.id})}" method="post" onsubmit="return confirm('Are you sure?') ? true : false;">
+                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                        </form>
+                    </td>
+                </tr>
+            </article>
+            </tbody>
+        </table>
+
+    </div>
+
+    <h1>Posts:</h1>
+    <hr></hr>
+    <article th:each="p : ${posts}">
+
+
+        <div class="blog-post">
+            <div class="row">
+
+
+            <form th:action="@{/admin/delete/post/{id}/(id=${p.id})}" method="post" onsubmit="return confirm('Are you sure?') ? true : false;">
+                <input type="submit" class="btn btn-outline-danger" value="Delete"/>
+            </form>
+
+                <h2 class="blog-post-title" th:text="${p.title}">Sample blog post</h2>
+            </div>
+
+            <p class="blog-post-meta" th:text="${p.date}+' ,by '+${p.author}">January 1, 2014 by </p>
+
+            <p th:text="${p.body}">This blog post shows</p>
+
+            <hr></hr>
+        </div>
+
+    </article>
+
+
+
+
+
+</main>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+
+
+</body></html>
